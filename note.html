@@ -84,4 +84,99 @@ Types:
               we can story any value 
     
     never:   will not return any thing never not like void will return undefined which is a value 
-              
+
+
+
+-----------------------------------------    
+
+typeScript compiler: 
+    
+    watch mode: 
+        tsc app.ts --watch   or tsc app.ts -w  but this will watch only one file 
+     
+    to watch mulit file:  
+        tsc --init 
+        this will generate json file     
+        now can just run tsc so all files will be compiled       
+        and can watch add file by ->  tsc -w          
+    
+    tsconfig.json file 
+     "exclude" :[     the files in array will not be compiled   
+       "file.ts",
+       "*.dev.ts"     means add files that have dev.ts  will not compiled **/*.dev.ts   any file with any folder 
+       "node_modules" deon't compile this folder 
+      ]    
+
+    "include" : [
+         "app.ts"           file here will compiled and not inserted here will not 
+    ]  
+
+    
+
+    "declarationMap": true,  help depageing and development 
+
+    outDir": "./dist"     orgnize files      
+    "rootDir": "./src",     
+
+    create 
+    src folder  => all typeScript files
+     and 
+     dist folder  => the compiled files 
+
+
+
+     "removeComments": true,  will remove comments in compiled files 
+
+     "noEmit": true,   will not genreate js files 
+
+     "noEmitOnError": flase   if there error will genreate js files if true it will not genreate 
+
+     "noUnusedLocals": true,    will throw error if defined variable but not use it  for local variables 
+
+
+------------------------------------------
+
+class: 
+
+    the constructor is used for initail values in class 
+    private employees: string[] = [];  this variable will only be accsseble inside the class and not accessble
+    in inheritance
+
+ 
+    private readonly id: string   the value will not changed 
+
+    creating another class with extend:            
+       class ItDepartment extends Department {
+         constructor(id: string, name: string, public admins: string[]) {
+         super(id, name);
+        }
+       }
+
+    protected employees: string[] = []; is accessible inside class and in inheritance
+
+    Getters and setters: see them in details in class folder 
+
+    static methods and static properties: 
+       don't have to call new 
+       example of static is the Math 
+       but it not avalible inside constructor or other class 
+       but if need to get them call the ClassName.staticName
+
+    overwrite the class methods: 
+       used when the inheritance calss should overwite the original class methoud 
+       set the class as abstract and methoud abstract
+       abstract class can only be inheritance so can't add create new instance of the class with using new 
+
+    private constructor: 
+      there is a patren in OOP that you only have one instance of the class. 
+ 
+
+   interface: 
+       descripe structure of the object 
+       can be interment inside of the class 
+       can use readonly 
+       can extends another interface 
+       userName?: string;   ? means add it is optional 
+       
+
+      

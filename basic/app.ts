@@ -4,10 +4,7 @@ enum UserRole { // typeScript enum type
   AUTHOR, // 2
 }
 
-
-
-type Combinable = number | string 
-
+type Combinable = number | string;
 
 const anyValue: any = ["d", 1];
 

@@ -1,0 +1,87 @@
+basic: 
+    create app.ts and add code to it and then compilet with tsc app.ts  will genreate new app.js file 
+    
+
+
+Types: 
+    const num1 = 20;   no need to tell typeScript this is a number const num1: number  = 20; it will
+    autmaticly know that but use need to declear the type if you don't but value 
+    const x1: number 
+    x1 = 5 
+
+    number 
+    string 
+    boolean 
+    object: 
+        const person: {} = {      or const person : object = { } but that not specific
+               name: "Mohammad",
+             age: 32,
+            };
+       
+             console.log(person);
+        
+        to be more specific: 
+              const person: {
+                 name: string;
+                 age: number;
+               } = {
+                name: "Mohammad",
+                age: 32,
+              };
+          
+             console.log(person);
+           
+    array:  type can be flexcable or strict 
+            flexcable : any[]  any value in could be in array
+            strict    : string[]
+
+    tuple   [1,2]    this not normal array this is fixed-length array 
+            role: [number, string]  the role is role[0] number and role[1] string 
+            you need array with only 2 elements and one is number and secound is string 
+
+    enum    it is enumerated global constant 
+            enum UserRole { // typeScript enum type
+             ADMIN, //0    can custom with any number like ADMIN = 5    will be 5  or can be with text ADMIN = 'ADMIN'
+             READ_ONLY, // 1
+             AUTHOR, // 2
+            }
+         
+     any   any value you want 
+
+    union  acceept two deferent types of value  input1: number | string | boolean 
+           +number convert string to number 
+
+
+           Type Aliases:  type Combinable = number | string   reuse when need it in the code
+           so no need to type number | string just Combinable 
+           
+           can also store object types: 
+                    type User = {name: string; age: number}
+                    const u1: User = {name: "Max", age: 30}
+
+
+     function return value: 
+            function add(n1: number, n2: number) :number {
+             return n1 + n2;
+             }
+      by puting :number that tell this function will return number value
+      but it is good to let typeScritp autmaticly return the type it will know the return will be number 
+
+      : void    will not retrun anything 
+      
+      : Function    but this will be any function 
+
+      functions types:  describe function parameters and return value 
+
+                function add(n1: number, n2: number): number {
+                 return n1 + n2;
+                }
+                                        parameters       return value
+                let combineValue: (a: number, b: number) => number;    
+
+
+    unknown:  we don't know what the user will put here it number or string 
+              we can story any value 
+    
+    never:   will not return any thing never not like void will return undefined which is a value 
+              

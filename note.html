@@ -103,7 +103,7 @@ typeScript compiler:
     tsconfig.json file 
      "exclude" :[     the files in array will not be compiled   
        "file.ts",
-       "*.dev.ts"     means add files that have dev.ts  will not compiled **/*.dev.ts   any file with any folder 
+       "*.dev.ts"     means all files that have dev.ts  will not compiled **/*.dev.ts  any file in any folder of the project
        "node_modules" deon't compile this folder 
       ]    
 
@@ -115,7 +115,7 @@ typeScript compiler:
 
     "declarationMap": true,  help depageing and development 
 
-    outDir": "./dist"     orgnize files      
+    outDir": "./dist"     orgnize files   the compiled files will be in dist folder   
     "rootDir": "./src",     
 
     create 
@@ -135,10 +135,161 @@ typeScript compiler:
 
 
 ------------------------------------------
-
+<!-- here is all about class -->
 class: 
 
     the constructor is used for initail values in class 
+
+    class Department{
+      name: string;
+    
+    constructor(n:string){
+      this.name = n 
+    }
+  }
+   const accounting = new Department("Accounting")
+
+ ....................................
+
+ <!-- ! adding methods with calss:  -->
+    
+ class Department{
+  name: string;
+
+constructor(n:string){
+  this.name = n 
+}
+
+describe(this:Department ){
+  console.log("Department:" + this.name)  
+}
+
+ }
+
+ const accounting = new Department("Accounting")
+
+ accounting.describe()  will print Accounting
+
+
+
+.......................................
+ <!-- ! private and public:  -->
+
+
+ class Department{
+  name: string;
+  <!-- private  means employees only accessple inside the class-->
+  <!-- to add new employee only can by addEmployee method  -->
+  <!-- the default is public  which is accessple out side class -->
+ private employees: string[] = []
+
+constructor(n:string){
+  this.name = n 
+}
+
+describe(this:Department ){
+  console.log("Department:" + this.name)  
+}
+
+addEmployee(employee:string){
+  this.employees.push(employee)
+}
+
+pringEmployees(){
+   console.log(this.employees.length)
+   console.log(this.employees)
+}
+
+ }
+
+ const accounting = new Department("Accounting")
+
+ accounting.describe()  will print Accounting
+
+ accounting.addEmployee("Max")
+ accounting.addEmployee("Mohammad")
+ accounting.pringEmployees
+
+
+.......... 
+
+<!-- ! shorthand Initialization:  -->
+
+istade of donig adding name:string and repeate that in constructor
+
+class Department{
+  name: string;
+   
+ private employees: string[] = []
+
+constructor(n:string){
+  this.name = n 
+}
+
+can do: 
+
+class Department{
+  
+   
+ private employees: string[] = []
+
+constructor(public name:string, private id: string){
+   
+}
+
+const accounting = new Department("id1","Accounting")
+
+............ 
+
+ <!-- ! readonly Properties:  -->
+
+should not be changed after initilaization like id add readonly
+
+class Department{
+  
+   
+  private employees: string[] = []
+ 
+ constructor(public name:string, private readonly id: string){
+    
+ }
+ 
+........... 
+
+<!--! 10. Inheritance -->
+
+if we need to make another calss but use information in another class use inheritance extends
+
+
+class ItDepartment extends Department {
+  
+  constructor(id:string, public admins:string[]){
+    super(id, "IT");      call the constructor in the base class 
+    
+  }
+  
+  }
+
+  or: 
+
+  class ItDepartment extends Department {
+    admins:string[]
+
+    constructor(id:string,  admins:string[]){
+      super(id, "IT");      call the constructor in the base class 
+      this.admins = admins
+    }
+    
+    }
+
+
+    const it = new ItDepartment("d1", ["Max", "Mohammad"])
+
+      it.name = "NEW NAME"
+
+
+
+
     private employees: string[] = [];  this variable will only be accsseble inside the class and not accessble
     in inheritance
 
@@ -179,4 +330,30 @@ class:
        userName?: string;   ? means add it is optional 
        
 
-      
+-----------------------------------------
+Type gard: 
+
+if there is function that has to types 
+
+type Vehicle = Car | Truck 
+
+const v1 = new Car()
+const v2 = new Truck()
+
+function useVehicle(vehicle: Vehicle){
+  vehicle.drive()
+  if("loadCargo" in vehicle){      check if it has this property  or can check if(vehicle instanceof Truck) 
+    vehicle,loadCarg(1000)
+  }
+}
+-----------------------------------------
+Generics: 
+
+is a type which is connected with other type and is flexible 
+const names: Array =  [] => Generic type 'Array<T>' requires 1 type argument(s)
+
+const names: Array<string> =  []     same as const names: string[] = []
+const names: Array<string | number> =  []    string or number
+
+constraints: 
+    function merge<T extends object>
